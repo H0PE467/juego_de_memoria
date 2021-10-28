@@ -90,19 +90,3 @@ tracer(False)
 onscreenclick(tap)
 draw()
 done()
-Logo
-
-Free Python Games
-
-
-Donate
-If you or your organization uses Free Games, consider donating:
-
-Donate to Free Python Games
-
-Related Topics
-Documentation overview
-Previous: Connect Four
-Next: Pacman
-Quick search
-©
