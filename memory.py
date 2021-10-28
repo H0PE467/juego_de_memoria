@@ -9,7 +9,7 @@ Exercises:
 5. Use letters instead of tiles.
 
 """
-
+#Comentario
 from random import *
 from turtle import *
 
