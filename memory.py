@@ -11,6 +11,7 @@ Exercises:
 
 EQUIPO 12
 Klaus Manuel Cedillo Arredondo A01653257 
+Isaac Jacinto Ruiz A01658578
 """
 
 #Librerias
@@ -20,6 +21,9 @@ from freegames import path
 
 #Variables
 car = path('car.gif')
+#Cambiando la siguiente lista podemos cambiar los simbolos que aparecen, 
+#en mi opinion seria mucho más fácil ya que las personas somos seres 
+#más visuales
 tiles = list(range(32)) * 2
 state = {'mark': None}
 hide = [True] * 64
@@ -91,13 +95,20 @@ def draw():
 
     mark = state['mark']
 
-    if mark is not None and hide[mark]:
+     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        goto(x + 2, y)
+        #Dependiendo de los numeros los mueve mas a la derecha para centrarlos 
+        if tiles[mark] > 9:
+            goto(x+3,y+2)
+        elif tiles[mark] > 19:
+            goto(x+5,y+2)
+        elif tiles[mark] > 29:
+            goto(x+7,y+2)
+        else:
+            goto(x+15,y+2)
         color('black')
         write(tiles[mark], font=('Arial', 30, 'normal'))
-
     update()
     ontimer(draw, 100)
 
