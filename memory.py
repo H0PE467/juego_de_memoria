@@ -95,13 +95,20 @@ def draw():
 
     mark = state['mark']
 
-    if mark is not None and hide[mark]:
+     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        goto(x + 2, y)
+        #Dependiendo de los numeros los mueve mas a la derecha para centrarlos 
+        if tiles[mark] > 9:
+            goto(x+3,y+2)
+        elif tiles[mark] > 19:
+            goto(x+5,y+2)
+        elif tiles[mark] > 29:
+            goto(x+7,y+2)
+        else:
+            goto(x+15,y+2)
         color('black')
         write(tiles[mark], font=('Arial', 30, 'normal'))
-
     update()
     ontimer(draw, 100)
 
