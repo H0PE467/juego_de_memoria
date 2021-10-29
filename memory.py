@@ -11,6 +11,7 @@ Exercises:
 
 EQUIPO 12
 Klaus Manuel Cedillo Arredondo A01653257 
+Isaac Jacinto Ruiz A01658578
 """
 
 #Librerias
@@ -20,6 +21,9 @@ from freegames import path
 
 #Variables
 car = path('car.gif')
+#Cambiando la siguiente lista podemos cambiar los simbolos que aparecen, 
+#en mi opinion seria mucho más fácil ya que las personas somos seres 
+#más visuales
 tiles = list(range(32)) * 2
 state = {'mark': None}
 hide = [True] * 64
