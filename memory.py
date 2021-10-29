@@ -8,18 +8,26 @@ Exercises:
 4. Center single-digit tile.
 5. Use letters instead of tiles.
 
+
+EQUIPO 12
+Klaus Manuel Cedillo Arredondo A01653257 
 """
 
+#Librerias
 from random import *
 from turtle import *
-
 from freegames import path
 
+#Variables
 car = path('car.gif')
 tiles = list(range(32)) * 2
 state = {'mark': None}
 hide = [True] * 64
+numeroDeEncontradas = 0
 
+#diccionario donde se almacena el numero de clics y el mensaje de victoria
+counter = {'clicks': 0,'ganador':"Felicidaes, encontraste todas"}
+writer = Turtle(visible=False)
 
 def square(x, y):
     "Draw white square with black outline at (x, y)."
@@ -46,6 +54,8 @@ def xy(count):
 
 def tap(x, y):
     "Update mark and hidden tiles based on tap."
+    #Contador de clics que se hacen
+    counter['clicks'] = counter['clicks']+1
     spot = index(x, y)
     mark = state['mark']
 
@@ -55,10 +65,20 @@ def tap(x, y):
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
-
+        global numeroDeEncontradas
+        #Detecta el numero de parejas encontradas
+        numeroDeEncontradas = numeroDeEncontradas + 1
 
 def draw():
     "Draw image and tiles."
+    #Mensaje que aparece si encuentras todas las parejas
+    if numeroDeEncontradas == 32:
+        writer.undo()
+        writer.goto(0, 160)
+        writer.write(counter['ganador'])
+    else:
+        writer.undo()
+        writer.write(counter['clicks'])
     clear()
     goto(0, 0)
     shape(car)
@@ -87,12 +107,12 @@ setup(420, 420, 370, 0)
 addshape(car)
 hideturtle()
 tracer(False)
+writer.goto(160, 160)
+writer.color('black')
+writer.write(counter['clicks'])
 onscreenclick(tap)
 draw()
 done()
-Logo
-
-Free Python Games
 
 
 Donate
